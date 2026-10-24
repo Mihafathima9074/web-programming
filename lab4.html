@@ -1,45 +1,48 @@
-<HTML>
-<HEAD>
-<TITLE>Form</TITLE>
-</HEAD>
-<BODY bgcolor="beige">
-<CENTER>
-<H1><u>Registration Form</u></H1>
-<Form action ="#" method="post">
-<fieldset>
-<label for="name">Name:</label>
-<input type="text" id="name" name="name"><br><br>
-<label for="email">E-mail:</label>
-<input type="email" id="email" name="email"><br><br>
-<label for="phone">Phone No:</label>
-<input type="tel" id="phone" name="phone"><br><br>
-<label for="password">Password:</label>
-<input type="password" id="password" name="password"><br><br>
-<label for="address">Address:</label>
-<textarea id="address" name="address" rows="4" cols="30"></textarea><br><br>
-<label for="qua">Qualification:</label>
-<select id="qua" name="qua">
-<option value="SSLC">SSLC</option>
-<option value="P2">Plus Two</option>
-<option value="ug">UG</option>
-<option value="pg">PG</option>
-</select><br><br>
-<label>Gender:</label>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body align="center" bgcolor="lightpink">
+<h2>Registration Form</h2>
+<form>
+<h3>Type the details</h3>
+<p><label="username">Username:</label><br>
+<input type="text" id="username" name="username" required></p>
+<p><label for="email">Email Address:</label><br>
+<input type="email" id="email" name="email" required></p>
+<p><label="password">Password:</label><br>
+<input type="password" id="password" name="password" minlength="8" required></p>
+<br>
+<h3>Details</h3>
+<p><label="fullname">Full Name:</label><br>
+<input type="text" id="fullname" name="fullname" required><br>
+<label>Gender:</label><br>
 <input type="radio" id="male" name="gender" value="male">
-<label for="male">Male:</label>
+<label="male">Male</label>
 <input type="radio" id="female" name="gender" value="female">
-<label for="female">Female:</label><br><br>
-<label>Interests</label>
-<input type="checkbox" id="sports" name="interests" value="sports">
-<label for="sports">Sports</label>
-<input type="checkbox" id="music" name="interests" value="music">
-<label for="music">Music</label>
-<input type="checkbox" id="travel" name="interests" value="travel">
-<label for="travel">Travel</label><br><br>
-<input type="submit" value="submit">
-<input type="reset" value="reset">
-</fieldset>
+<label="female">Female</label>
+<input type="radio" id="other" name="gender" value="other">
+<label="other">Other</label><br>
+<label="country">Place:</label><br>
+<select id="country" name="country" required>
+<option value="IN">India</option>
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+<option value="AU">Australia</option>
+</select>
+<br>
+<h3>Qualifications</h3>
+<label value="SSLC">SSLC</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+<label value="+2">PLUS TWO</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+<label value="degree">DEGREE</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+<label value="pg">PG</label>
+<input type="checkbox" id="qualification" name="qualification"><br>
+</p>
+<button type="submit">Register Account</button>
+<button type="reset">Clear Form</button>
 </form>
-</center>
 </body>
 </html>
