@@ -35,7 +35,7 @@ input[type="submit"] {
 <form onsubmit="return checkAnswer()">
 <h2>Online Examination</h2>
 <p>Answer all questions</p>
-
+<h3 id="timer">Time Left: 10:00</h3>
 <div class="question">
 <p>1. Which language is used to create web pages?</p>
 <input type="radio" name="q1" value="HTML"> HTML<br>
@@ -105,65 +105,43 @@ input[type="submit"] {
 <input type="radio" name="q10" value="High Text Machine Language"> High Text Machine Language<br>
 <input type="radio" name="q10" value="Hyper Tool Markup Language"> Hyper Tool Markup Language<br>
 </div><br>
-
 <input type="submit" value="Submit Exam">
 <h3 id="result"></h3>
 </form>
-
 <script>
-function checkAnswer() {
-      var score = 0;
-    var q1 = document.querySelector('input[name="q1"]:checked');
-    var q2 = document.querySelector('input[name="q2"]:checked');
-    var q3 = document.querySelector('input[name="q3"]:checked');
-    var q4 = document.querySelector('input[name="q4"]:checked');
-    var q5 = document.querySelector('input[name="q5"]:checked');
-    var q6 = document.querySelector('input[name="q6"]:checked');
-    var q7 = document.querySelector('input[name="q7"]:checked');
-    var q8 = document.querySelector('input[name="q8"]:checked');
-    var q9 = document.querySelector('input[name="q9"]:checked');
-    var q10 = document.querySelector('input[name="q10"]:checked');
-
-    if (q1 && q2 && q3 && q4 && q5 && q6 && q7 && q8 && q9 && q10) {
-      if (q1.value == "HTML") {
-            score++;
-        }
-        if (q2.value == "CSS") {
-            score++;
-        }
-        if (q3.value == "p") {
-            score++;
-        }
-        if (q4.value == "//") {
-            score++;
-        }
-        if (q5.value == "alert()") {
-            score++;
-        }
-        if (q6.value == "var") {
-            score++;
-        }
-        if (q7.value == "onclick") {
-            score++;
-        }
-        if (q8.value == "getElementById()") {
-            score++;
-        }
-        if (q9.value == "img") {
-            score++;
-        }
-        if (q10.value == "Hyper Text Markup Language") {
-            score++;
-        }
-
-        document.getElementById("result").innerHTML =
-        "Exam Completed!<br>Your Score: " + score + "/10";
-    } else {
-        alert("Please answer all questions");
+var time = 600;
+var submitted = false;
+var timer = setInterval(function() {
+    var min = Math.floor(time / 60);
+    var sec = time % 60;
+    document.getElementById("timer").innerHTML =
+    "Time Left: " + min + ":" + (sec < 10 ? "0" : "") + sec;
+    time--;
+    if (time < 0) {
+        clearInterval(timer);
+        alert("Time is up!");
+        checkAnswer();
     }
+}, 1000);
+function checkAnswer() {
+    if (submitted) return false;
+    submitted = true;
+    clearInterval(timer);
+    var answers = ["HTML", "CSS", "p",
+    "//", "alert()", "var", "onclick",
+    "getElementById()", "img", "Hyper Text Markup Language"];
+    var score = 0;
+    for (var i = 1; i <= 10; i++) {
+        var q = document.querySelector('input[name="q' + i + '"]:checked');
+
+        if (q && q.value == answers[i-1]) {
+            score++;
+        }
+    }
+    document.getElementById("result").innerHTML =
+    "Exam Completed!<br>Your Score: " + score + "/10";
     return false;
 }
 </script>
 </body>
 </html>
-
